@@ -1,0 +1,92 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Debug",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-O0",
+                "-Wall",
+                "-o",
+                "${workspaceFolder}/build/game.exe",
+                "${workspaceFolder}/src/*.cpp",
+                "-I${workspaceFolder}/include",
+                "-IC:/raylib/include",
+                "-LC:/raylib/lib",
+                "-lraylib",
+                "-lopengl32",
+                "-lgdi32",
+                "-lwinmm",
+                
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Build Release",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-o",
+                "${workspaceFolder}/build/game.exe",
+                "${workspaceFolder}/src/*.cpp",
+                "-I${workspaceFolder}/include",
+                "-IC:/raylib/include",
+                "-LC:/raylib/lib",
+                "-lraylib",
+                "-lopengl32",
+                "-lgdi32",
+                "-lwinmm",
+                "-O2",
+                "-mwindows"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"]
+        },
+
+        {
+            "label": "CMake Configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B",
+                "build",
+                "-DCMAKE_BUILD_TYPE=Debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "CMake build",
+            "type": "shell",
+            "command":"cmake",
+            "args": [
+                "--build",
+                "build"
+            ],
+            "dependsOn":["CMake Configure"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        
+        {
+            "label": "Run",
+            "type": "shell",
+            "command": "${workspaceFolder}/build/game.exe",
+            "dependsOn": ["CMake build"],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}
