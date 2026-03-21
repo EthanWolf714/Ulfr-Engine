@@ -15,32 +15,32 @@
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-int worldMap[mapHeight][mapWidth] =
+int worldMap[mapWidth][mapHeight] =
 {
-  {4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,7,7,7,7,7,7,7,7},
-  {4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
-  {4,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
-  {4,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7},
-  {4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,7},
-  {4,0,4,0,0,0,0,5,5,5,5,5,5,5,5,5,7,7,0,7,7,7,7,7},
-  {4,0,5,0,0,0,0,5,0,5,0,5,0,5,0,5,7,0,0,0,7,7,7,1},
-  {4,0,6,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
-  {4,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1},
-  {4,0,8,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,0,0,0,8},
-  {4,0,0,0,0,0,0,5,0,0,0,0,0,0,0,5,7,0,0,0,7,7,7,1},
-  {4,0,0,0,0,0,0,5,5,5,5,0,5,5,5,5,7,7,7,7,7,7,7,1},
-  {6,6,6,6,6,6,6,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
-  {8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
-  {6,6,6,6,6,6,0,6,6,6,6,0,6,6,6,6,6,6,6,6,6,6,6,6},
-  {4,4,4,4,4,4,0,4,4,4,6,0,6,2,2,2,2,2,2,2,3,3,3,3},
-  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
-  {4,0,0,0,0,0,0,0,0,0,0,0,6,2,0,0,5,0,0,2,0,0,0,2},
-  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
-  {4,0,6,0,6,0,0,0,0,4,6,0,0,0,0,0,5,0,0,0,0,0,0,2},
-  {4,0,0,5,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,2,0,2,2},
-  {4,0,6,0,6,0,0,0,0,4,6,0,6,2,0,0,5,0,0,2,0,0,0,2},
-  {4,0,0,0,0,0,0,0,0,4,6,0,6,2,0,0,0,0,0,2,0,0,0,2},
-  {4,4,4,4,4,4,4,4,4,4,1,1,1,2,2,2,2,2,2,3,3,3,3,3}
+  {8,8,8,8,8,8,8,8,8,8,8,4,4,6,4,4,6,4,6,4,4,4,6,4},
+  {8,0,0,0,0,0,0,0,0,0,8,4,0,0,0,0,0,0,0,0,0,0,0,4},
+  {8,0,3,3,0,0,0,0,0,8,8,4,0,0,0,0,0,0,0,0,0,0,0,6},
+  {8,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6},
+  {8,0,3,3,0,0,0,0,0,8,8,4,0,0,0,0,0,0,0,0,0,0,0,4},
+  {8,0,0,0,0,0,0,0,0,0,8,4,0,0,0,0,0,6,6,6,0,6,4,6},
+  {8,8,8,8,0,8,8,8,8,8,8,4,4,4,4,4,4,6,0,0,0,0,0,6},
+  {7,7,7,7,0,7,7,7,7,0,8,0,8,0,8,0,8,4,0,4,0,6,0,6},
+  {7,7,0,0,0,0,0,0,7,8,0,8,0,8,0,8,8,6,0,0,0,0,0,6},
+  {7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,6,0,0,0,0,0,4},
+  {7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,6,0,6,0,6,0,6},
+  {7,7,0,0,0,0,0,0,7,8,0,8,0,8,0,8,8,6,4,6,0,6,6,6},
+  {7,7,7,7,0,7,7,7,7,8,8,4,0,6,8,4,8,3,3,3,0,3,3,3},
+  {2,2,2,2,0,2,2,2,2,4,6,4,0,0,6,0,6,3,0,0,0,0,0,3},
+  {2,2,0,0,0,0,0,2,2,4,0,0,0,0,0,0,4,3,0,0,0,0,0,3},
+  {2,0,0,0,0,0,0,0,2,4,0,0,0,0,0,0,4,3,0,0,0,0,0,3},
+  {1,0,0,0,0,0,0,0,1,4,4,4,4,4,6,0,6,3,3,0,0,0,3,3},
+  {2,0,0,0,0,0,0,0,2,2,2,1,2,2,2,6,6,0,0,5,0,5,0,5},
+  {2,2,0,0,0,0,0,2,2,2,0,0,0,2,2,0,5,0,5,0,0,0,5,5},
+  {2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,5,0,5,0,5,0,5,0,5},
+  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5},
+  {2,0,0,0,0,0,0,0,2,0,0,0,0,0,2,5,0,5,0,5,0,5,0,5},
+  {2,2,0,0,0,0,0,2,2,2,0,0,0,2,2,0,5,0,5,0,0,0,5,5},
+  {2,2,2,2,1,2,2,2,2,2,2,1,2,2,2,5,5,5,5,5,5,5,5,5}
 };
 
 
@@ -83,24 +83,25 @@ int main()
 
    
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-    
+
     //generate textures
-    for(int x = 0; x < texWidth; x++)
-    for(int y = 0; y < texHeight; y++)
-    {
-        int xorcolor = (x * 256 / texWidth) ^ (y + 256 / texHeight);
-        //int xcolor = x * 256 / texHeight
-        int ycolor = y * 256 / texHeight;
-        int xycolor = y * 128 / texHeight + x * 128 / texWidth;
-        texture[0][texWidth * y + x] = 65536 * 254 * (x != y && x != texWidth - y); //flat red texture with black cross
-        texture[1][texWidth * y + x] = xycolor + 256 * xycolor + 65536 * xycolor; //sloped greyscale
-        texture[2][texWidth * y + x] = 256 * xycolor + 65536 * xycolor; //sloped yellow gradient
-        texture[3][texWidth * y + x] = xorcolor + 256 * xorcolor + 65536 * xorcolor; //xor greyscale
-        texture[4][texWidth * y + x] = 256 * xorcolor; //xor green
-        texture[5][texWidth * y + x] = 65536 * 192 * (x % 16 && y % 16); //red bricks
-        texture[6][texWidth * y + x] = 65536 * ycolor; //red gradient
-        texture[7][texWidth * y + x] = 128 + 256 * 128 + 65536 * 128; //flat grey texture
-    }
+    Image  texImages[8];
+    texImages[0] = LoadImage("src/assets/pics/eagle.png");
+    texImages[1] = LoadImage("src/assets/pics/redbrick.png");
+    texImages[2] = LoadImage("src/assets/pics/purplestone.png");
+    texImages[3] = LoadImage("src/assets/pics/greystone.png");
+    texImages[4] = LoadImage("src/assets/pics/bluestone.png");
+    texImages[5] = LoadImage("src/assets/pics/mossy.png");
+    texImages[6] = LoadImage("src/assets/pics/wood.png");
+    texImages[7] = LoadImage("src/assets/pics/colorstone.png");
+
+    //load the pixel data from each image into your texture array
+    Color* texColors[8];
+    for(int i = 0; i < 8; i++) {
+        texColors[i] = LoadImageColors(texImages[i]);
+        UnloadImage(texImages[i]);
+    }   
+
     TraceLog(LOG_INFO, "Textures generated");
 
     // Main game loop
@@ -251,18 +252,14 @@ int main()
                     //cast texture coordinate to integer and mask with texHeight-1 in case of overflow
                     int texY = (int)texPos & (texHeight - 1);
                     texPos += step;
-                    uint32_t color = texture[textNum][texHeight * texY + texX];
-                    //make color darker for y sides: RGB bytes each divided through two with "shift" and an "and"
-                    if(side == 1) color = (color >> 1) & 8355711;
 
-                    //unpack uint32 color into sepearte r,g,b bytes
-                    //shift bits to extract each channle
-                    uint8_t r = (color >> 16) & 0xFF; //shift 16 bits right to get red
-                    uint8_t g = (color >> 8) & 0xFF; //shift 8 bits left to get green
-                    uint8_t b = color & 0xFF; // no shift for blue
-                    //write as raylib color to the pixel buffer
-                    // y * screenWidth + x converts 2D coordinates to flat array index
-                    pixels[y * screenWidth + x] = (Color){r,g,b,255};
+                    Color texColor = texColors[textNum][texY * texWidth + texX];
+                    if(side == 1){
+                        texColor.r /= 2;
+                        texColor.g /= 2;
+                        texColor.b /= 2;
+                    }
+                    pixels[y * screenWidth + x] = texColor;
                 }
 
 
@@ -285,7 +282,9 @@ int main()
         
     }
     // De-Initialization
-   
+   for(int i = 0; i < 8; i++){
+    UnloadImageColors(texColors[i]);
+   }
     CloseWindow();        // Close window and OpenGL context
 
     return 0;
