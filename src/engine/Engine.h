@@ -1,6 +1,7 @@
 #pragma once
 #include "raylib.h"
 #include "rlgl.h"
+#include "Renderer.h"
 class Engine {
     public:
         void Init();
@@ -10,7 +11,8 @@ class Engine {
     private:
         void Update();
         void Render();
+        Renderer m_renderer;
         Camera3D m_camera;
-        Texture2D m_testTexture;
         bool m_running = false;
+
 };
