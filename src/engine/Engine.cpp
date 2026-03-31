@@ -11,6 +11,7 @@ void Engine::Init(){
     m_renderer.Init();
     m_camera.Init();
     m_map.Build();
+    m_player.Init();
     m_textureManager.Load("assets/pics/greystone.png");
     m_textureManager.Load("assets/pics/mossy.png");
     
@@ -37,6 +38,7 @@ void Engine::ShutDown(){
 void Engine::Update()
 {
     UpdateCamera(&m_camera.GetCamera(), CAMERA_FREE);
+   
 }
 
 void Engine::Render()

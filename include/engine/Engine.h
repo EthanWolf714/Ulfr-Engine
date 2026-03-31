@@ -7,6 +7,7 @@
 #include "Camera.h"
 #include "TextureManager.h"
 #include "game/Map.h"
+#include "game/Player.h"
 
 class Engine {
     public:
@@ -22,6 +23,7 @@ class Engine {
         TextureManager m_textureManager;
         bool m_running = false;
         Map m_map;
+        Player m_player;
        
 
       
