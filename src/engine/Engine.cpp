@@ -10,6 +10,7 @@ void Engine::Init(){
     rlImGuiSetup(true);
     m_renderer.Init();
     m_camera.Init();
+    m_map.Build();
     m_textureManager.Load("assets/pics/greystone.png");
     m_textureManager.Load("assets/pics/mossy.png");
     
@@ -42,9 +43,8 @@ void Engine::Render()
 {
     Texture2D wallText = m_textureManager.Get("assets/pics/mossy.png");
         m_renderer.BeginFrame(m_camera.GetCamera()); 
-            for(auto& wall : m_level)
+            for(auto& wall : m_map.GetWalls())
             {
-             
                 m_renderer.DrawWall(wall, wallText);
             }
         m_renderer.EndFrame();
