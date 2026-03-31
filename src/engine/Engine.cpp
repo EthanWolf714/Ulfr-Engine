@@ -4,6 +4,7 @@
 
 
 void Engine::Init(){
+     printf("Engine Init called\n"); 
     Logger::DebugPrintF("Engine Initialized");
     InitWindow(800, 450, "Ulfr Engine");
     SetTargetFPS(60);

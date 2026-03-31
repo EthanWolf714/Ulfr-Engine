@@ -14,7 +14,7 @@ class Logger
     public:
         static int VDebugPrintF(const char* format, va_list argList);
         static int DebugPrintF(const char* format, ...);
-        static const std::vector<std::string> GetLogBuffer();
+        static const std::vector<std::string>& GetLogBuffer();
 
    
        

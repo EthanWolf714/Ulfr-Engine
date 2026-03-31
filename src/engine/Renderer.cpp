@@ -45,7 +45,6 @@ void Renderer::Draw(Camera& camera, Texture m_Texture)
 
 void Renderer::DrawWall(const Wall& wall, Texture2D m_texture)
 {
-    Logger::DebugPrintF("Drawing Wall");
     DrawGrid(1.0,1.0);
     rlSetTexture(m_texture.id);
         rlBegin(RL_QUADS);

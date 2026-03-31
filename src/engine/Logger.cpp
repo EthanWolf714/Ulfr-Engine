@@ -11,7 +11,7 @@ int Logger::VDebugPrintF(const char* format, va_list argList)
     int charsWritten = vsnprintf(s_buffer, MAX_CHARS, format, argList);
 
     //handles the formatting
-    TraceLog(LOG_DEBUG, s_buffer);
+    TraceLog(LOG_INFO, s_buffer);
 
 
     s_logBuffer.push_back(std::string(s_buffer));
@@ -33,7 +33,7 @@ int Logger::DebugPrintF(const char* format, ...)
 }
 
 //returns log buffer for Log panel in editor
-const std::vector<std::string> GetLogBuffer()
+const std::vector<std::string>& Logger::GetLogBuffer()
 {
     return s_logBuffer;
 }
