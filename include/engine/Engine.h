@@ -9,6 +9,7 @@
 #include "game/Map.h"
 #include "game/Player.h"
 #include "engine/Logger.h"
+#include "editor/Editor.h"
 
 class Engine {
     public:
@@ -19,12 +20,15 @@ class Engine {
     private:
         void Update();
         void Render();
+        Editor m_editor;
         Renderer m_renderer;
         GameCamera m_camera;
         TextureManager m_textureManager;
         bool m_running = false;
         Map m_map;
         Player m_player;
+        
+        
        
 
       

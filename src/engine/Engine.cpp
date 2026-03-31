@@ -11,6 +11,7 @@ void Engine::Init(){
     m_running = true;
     rlImGuiSetup(true);
     m_renderer.Init();
+    m_editor.Init();
     m_camera.Init();
     m_map.Build();
     m_player.Init();
@@ -52,9 +53,10 @@ void Engine::Render()
             {
                 m_renderer.DrawWall(wall, wallText);
             }
+            Logger::DebugPrintF("Drawing Walls");
         m_renderer.EndFrame();
             rlImGuiBegin();
-
+                m_editor.Draw();
                 ImGui::Begin("Debug");
                     ImGui::Text("FPS: %d", GetFPS());
                     ImGui::Text("Camera Pos: %.2f, %.2f, %.2f",
