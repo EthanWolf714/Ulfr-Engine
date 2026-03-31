@@ -6,6 +6,8 @@
 #include "Renderer.h"
 #include "Camera.h"
 #include "TextureManager.h"
+#include "game/Map.h"
+
 class Engine {
     public:
         void Init();
@@ -19,5 +21,9 @@ class Engine {
         GameCamera m_camera;
         TextureManager m_textureManager;
         bool m_running = false;
+        Wall m_level[4];
+       
+
+      
 
 };

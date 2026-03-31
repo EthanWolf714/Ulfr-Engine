@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "rlgl.h"
 #include <string>
+#include "game/Map.h"
 
 class Renderer
 {
@@ -10,6 +11,8 @@ class Renderer
         void Update();
         void ShutDown();
         void Draw(Camera& camera, Texture m_testTexture);
+        void DrawFloor();
+        void DrawWall(const Wall& wall, Texture m_texture);
         void DrawTestQuad(Texture m_testTexture);
         void BeginFrame(Camera3D& camera);
         void EndFrame();
@@ -17,4 +20,8 @@ class Renderer
         Texture2D m_testTexture;
         Texture2D m_Texture;
         
+        
 };
+
+
+

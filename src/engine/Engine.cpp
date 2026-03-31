@@ -1,5 +1,8 @@
 #include "engine/Engine.h"
 
+
+
+
 void Engine::Init(){
     InitWindow(800, 450, "Ulfr Engine");
     SetTargetFPS(60);
@@ -12,7 +15,14 @@ void Engine::Init(){
     
     TraceLog(LOG_INFO, "Working directory: %s", GetWorkingDirectory());
 
-    
+    m_level[0] = {-5, -5,  5, -5, 0, 3};
+    m_level[1] = { 5, -5,  5,  5, 0, 3};
+    m_level[2] = { 5,  5, -5,  5, 0, 3};
+    m_level[3] = {-5,  5, -5, -5, 0, 3};
+
+    TraceLog(LOG_INFO, "Wall 0: %.1f %.1f %.1f %.1f", 
+        m_level[0].x1, m_level[0].z1, 
+        m_level[0].x2, m_level[0].z2);
 
 }
 
@@ -40,11 +50,12 @@ void Engine::Update()
 void Engine::Render()
 {
     Texture2D wallText = m_textureManager.Get("assets/pics/mossy.png");
-    
         m_renderer.BeginFrame(m_camera.GetCamera()); 
-            m_renderer.DrawTestQuad( wallText);
-
-           
+            for(auto& wall : m_level)
+            {
+             
+                m_renderer.DrawWall(wall, wallText);
+            }
         m_renderer.EndFrame();
             rlImGuiBegin();
 
