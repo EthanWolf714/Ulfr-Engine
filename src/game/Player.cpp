@@ -3,7 +3,7 @@
 
 Player::Player()
 {
-    Logger::DebugPrintF("Player created!");
+    //Logger::DebugPrintF("Player created!");
     //player size init
     size.x = 0.5;
     size.y = 1.0f;
@@ -35,7 +35,7 @@ Player::Player()
 
 
 
-void Player::Update()
+void Player::Update(float dt, const InputHandler& input)
 {
     this->SavePosition();
 
@@ -59,12 +59,18 @@ void Player::Update()
         }
 
         UpdateCameraPro(&m_PlayerCam,
-                    (Vector3){(IsKeyDown(KEY_W) - IsKeyDown(KEY_S)) * speed,
-                              (IsKeyDown(KEY_D) - IsKeyDown(KEY_A)) * speed,
-                              0.0f},
-                    (Vector3){GetMouseDelta().x * mouseSensitivity,
-                              GetMouseDelta().y * mouseSensitivity, 0.0f},
-                    0.0f);
+                    (Vector3){
+                        (input.MoveForward() - input.MoveBackward()) * speed,
+                        (input.StrafeRight() - input.StrafeLeft()) * speed,
+                        0.0f
+                    },
+                    (Vector3){
+                        input.GetMouseDelta().x * mouseSensitivity,
+                        input.GetMouseDelta().y * mouseSensitivity, 
+                        0.0f
+                    },
+                    0.0f
+                );
         
         //velocity vecotr update
         velocity = Vector3Subtract(m_PlayerCam.position, previousPosition);

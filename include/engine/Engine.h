@@ -8,8 +8,9 @@
 #include "TextureManager.h"
 #include "game/Map.h"
 #include "game/Player.h"
-#include "engine/Logger.h"
+#include "Logger.h"
 #include "editor/Editor.h"
+#include "InputHandler.h"
 
 
 enum class EngineMode
@@ -19,17 +20,23 @@ enum class EngineMode
 };
 class Engine {
     public:
-        void Init();
+        
         void Run();
-        void ShutDown();
+        
     
     private:
-        void Update();
+        void Update(float dt);
         void Render();
+        void SetMode(EngineMode mode);
+        void ShutDown();
+        void Init();
+
+        //subsystems
         Editor m_editor;
         EngineMode m_mode = EngineMode::Editor;
         Renderer m_renderer;
         GameCamera m_camera;
+        InputHandler    m_input;
         TextureManager m_textureManager;
         bool m_running = false;
         Map m_map;
@@ -42,3 +49,4 @@ class Engine {
       
 
 };
+

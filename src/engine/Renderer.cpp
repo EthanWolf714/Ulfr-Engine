@@ -3,6 +3,8 @@
 void Renderer::Init()
 {
    Logger::DebugPrintF("Initializing renderer");
+
+   Logger::DebugPrintF("Renderer Initialized");
 }
 
 void Renderer::Update()

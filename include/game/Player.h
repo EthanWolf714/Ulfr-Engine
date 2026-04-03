@@ -3,7 +3,7 @@
 #include "raymath.h"
 #include "engine/Camera.h"
 #include "engine/Logger.h"
-
+#include "engine/InputHandler.h"
 
 
 //modeled after froopy090 fps-game in ralyib 
@@ -17,7 +17,7 @@ class Player
         Camera m_PlayerCam;
         int cameraMode;
         Player();
-        void Update();
+        void Update(float dt, const InputHandler& input);
         void Draw();
 
         Vector3 GetPosition();
