@@ -4,7 +4,7 @@
 .idea
 CMakeCache.txt
 imgui.ini
-cmake-build-debug-mingw/
+cmake-build-debug/
 CMakeFiles/
 cmake_install.cmake
 Makefile
