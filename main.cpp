@@ -1,10 +1,7 @@
-#include "raylib.h"
-#include "Engine/core/Engine.h"
 
 //entry point
 int main()
 {
-    Engine engine;
-    engine.Run();
+    printf("welcome to Fimbul");
     return 0;
 }
