@@ -4,10 +4,10 @@ set echo on
 
 mkdir -p ../bin
 
-# Get a list of all the .c files.
+# Get a list of all the .cpp files.
 cppFilenames=$(find . -type f -name "*.cpp")
 
-# echo "Files:" $cFilenames
+# echo "Files:" $cppFilenames
 
 assembly="testbed"
 compilerFlags="-g -fdeclspec -fPIC" 
