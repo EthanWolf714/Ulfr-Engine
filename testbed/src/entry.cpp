@@ -16,7 +16,7 @@ b8 create_game(game* out_game){
     out_game->on_resize = game_on_resize;
 
 
-    out_game->state = app.get_memory_system().falloc(sizeof(game_state), MEMORY_TAG_GAME);
+    out_game->state = memory.falloc(sizeof(game_state), MEMORY_TAG_GAME);
     return TRUE;
 }
 

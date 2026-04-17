@@ -72,3 +72,5 @@ class fmemory {
 
         FAPI char* get_memory_usage_str();
 };
+
+extern fmemory memory;

@@ -1,5 +1,7 @@
 #include "fmemory.h"
 
+fmemory memory;
+
 void fmemory::initialize_memory(){
 
 }

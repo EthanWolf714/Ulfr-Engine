@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include "defines.h"
 #include <functional>
 #include "core/fmemory.h"
@@ -8,7 +9,7 @@
 
 
 
-
+ 
 // event data passed to every callback
 struct EventContext {
       union {
@@ -34,35 +35,35 @@ struct EventContext {
 using EventCallback = std::function<bool(u16 code, void* sender, EventContext data)>;
 
 //one registerd listener
-struct RegisterdEvent {
+struct RegisteredEvent {
     //use handle for unregistering
-    u32 handle;
+    void* listener;
     EventCallback callback;
 };
 
 
 
-class event {
-
-    protected: 
-        
+class event {       
     public:
     b8 initialize();
     void shutdown();
 
-    FAPI u32 register_event(u16 code, EventCallback callback);
-    FAPI void unregister_event(u16 code, u32 handle);
+    FAPI b8 register_event(u16 code,void* listener, EventCallback callback);
+    FAPI b8 unregister_event(u16 code,void* listener);
     FAPI b8 fire_event(u16 code, void* sender, EventContext context);
-    std::unordered_map<u16, std::vector<RegisterdEvent>> registery;
-    b8 is_initialized = false;
-    fmemory memory;
+    
+
+    private:
+        std::unordered_map<u16, std::vector<RegisteredEvent>> registery;
+        b8 is_initialized = FALSE;
+    
  
 
 
 };
 
 
-enum system_event_code {
+enum class system_event_code {
     // Shuts the application down on the next frame.
     EVENT_CODE_APPLICATION_QUIT = 0x01,
 
@@ -111,5 +112,5 @@ enum system_event_code {
     EVENT_CODE_RESIZED = 0x08,
 
     MAX_EVENT_CODE = 0xFF
-} system_event_code;
+};
 

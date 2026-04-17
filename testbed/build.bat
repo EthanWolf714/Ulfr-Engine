@@ -14,7 +14,7 @@ SET assembly=testbed
 SET compilerFlags=-g 
 REM -Wall -Werror
 SET includeFlags=-Isrc -I../engine/src/
-SET linkerFlags=-L../bin/ -lengine.lib
+SET linkerFlags=-L../bin/ -lengine.lib -lmsvcrtd -lvcruntimed -lucrtbased
 SET defines=-D_DEBUG -DFIMPORT
 
 ECHO "Building %assembly%%..."

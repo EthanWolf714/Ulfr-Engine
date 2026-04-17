@@ -2,24 +2,12 @@
 
 
 
-typedef struct event_code_entry {
-    RegisterdEvent* events;
-} event_code_entry;
 
-#define MAX_MESSAGE_CODES 16384
-// State structure.
-typedef struct event_system_state {
-    // Lookup table for event codes.
-    event_code_entry registered[MAX_MESSAGE_CODES];
-} event_system_state;
 
-static event_system_state state;
 b8 event::initialize() {
     if(is_initialized == TRUE){
         return FALSE;
     }
-    is_initialized = FALSE;
-    memory.fzero_memory(&state, sizeof(state));
 
     is_initialized = TRUE;
     return TRUE;
@@ -27,18 +15,60 @@ b8 event::initialize() {
 
 
 void event::shutdown(){
-    //clearn vector
+    registery.clear();
+    is_initialized = false;
 }
 
-u32 event::register_event(u16 code, EventCallback callback){
+b8 event::register_event(u16 code,void* listener, EventCallback callback){
     
     if(is_initialized == FALSE){
         return FALSE;
     }
 
+    auto& vec = registery[code];
 
-    return 0;
+    // prevent duplicate registration
+    for (const auto& e : vec) {
+        if (e.listener == listener) {
+            return FALSE;
+        }
+    }
+    
+
+    vec.push_back({listener, callback});
+
+    return TRUE;
 
 
+}
+
+
+b8 event::unregister_event(u16 code, void* listener){
+    if (!is_initialized) return FALSE;
+
+ 
+    auto& vec = registery[code];
+    for(auto i = vec.begin(); i != vec.end(); ++i){
+        if(i->listener == listener){
+            vec.erase(i);
+            return TRUE;
+        }
+    }
+    
+    return FALSE;
+}
+
+b8 event::fire_event(u16 code, void* sender, EventContext context){
+    auto it = registery.find(code);
+    if(it == registery.end()) return FALSE;
+
+    auto listeners = it->second;
+    for(auto& e: listeners){
+        if(e.callback(code, sender, context)){
+            return TRUE; //handled
+        }
+    }
+
+    return FALSE;
 }
 
