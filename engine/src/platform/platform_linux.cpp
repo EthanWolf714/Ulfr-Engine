@@ -1,16 +1,19 @@
 #include "platform.h"
 
 
+
 #if FPLATFORM_LINUX
+#include "core/logger.h"
+#include "core/event.h"
+#include "core/input.h"
+
 #include <xcb/xcb.h>
 #include <X11/keysym.h>
 #include <X11/XKBlib.h> //sudo dnf install libx11-devel
 #include <X11/Xlib.h>
 #include <X11/Xlib-xcb.h> //sudo dnf install libxkbcommon-x11-devel
 #include <sys/time.h>
-#include <core/logger.h>
-#include <core/event.h>
-#include <core/input.h>
+
 
 #if _POST_C_SOURCE >= 199309L
 #include <time.h> //nanosleep
@@ -34,7 +37,7 @@ typedef struct internal_state {
 
 keys translate_keycode(u32 x_keycode);
 
-FAPI b8 platform_startup(
+b8 platform_startup(
     platform_state* plat_state,
     const char* application_name,
     i32 x,
@@ -175,7 +178,7 @@ FAPI b8 platform_startup(
 }
 
 
-FAPI void platform_shutdown(platform_state* plat_state){
+void platform_shutdown(platform_state* plat_state){
     //cold cast
     internal_state *state = (internal_state *)plat_state->internal_state;
     //turn on repeats since its global
@@ -185,7 +188,7 @@ FAPI void platform_shutdown(platform_state* plat_state){
 
 }
 
-FAPI b8 platform_pump_message(platform_state* plat_state){
+b8 platform_pump_message(platform_state* plat_state){
     internal_state *state = (internal_state *)plat_state->internal_state;
 
     xcb_generic_event_t *event;
@@ -220,12 +223,12 @@ FAPI b8 platform_pump_message(platform_state* plat_state){
                 keys key = translate_keycode(key_sym);
 
                 //pass to input system for process
-                input_process_key(key,pressed);
+               input_process_key(key, pressed);
             }break; 
             case XCB_BUTTON_PRESS:
             case XCB_BUTTON_RELEASE: {
                 // mouse button pressed and release
-                xcb_button_press_event_t *mouse_event = (xcb_button_press_event_t *) event;
+                xcb_button_press_event_t *mouse_event = (xcb_button_press_event_t *)event;
                 b8 pressed = event->response_type == XCB_BUTTON_PRESS;
                 buttons mouse_button = BUTTON_MAX_BUTTONS;
                 switch (mouse_event->detail){
