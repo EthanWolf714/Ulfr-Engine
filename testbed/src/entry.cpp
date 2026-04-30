@@ -18,7 +18,7 @@ b8 create_game(game* out_game){
     out_game->on_resize = game_on_resize;
 
     //allocate memory for game state
-    out_game->state = memory.falloc(sizeof(game_state), MEMORY_TAG_GAME);
+    out_game->state = (game_state*)memory.falloc(sizeof(game_state), MEMORY_TAG_GAME);
     return TRUE;
 }
 

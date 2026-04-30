@@ -4,9 +4,13 @@
 #include "logger.h"
 #include "platform/platform.h"
 #include "core/fmemory.h"
-#include "clock.h"
+
 #include "core/event.h"
 #include "core/input.h"
+#include "clock.h"
+
+#include "renderer/renderer_frontend.h"
+
 
 struct game;
 

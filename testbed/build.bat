@@ -13,7 +13,7 @@ REM echo "Files:" %cppFilenames%
 SET assembly=testbed
 SET compilerFlags=-g 
 REM -Wall -Werror
-SET includeFlags=-Isrc -I../engine/src/
+SET includeFlags=-Isrc -I../engine/src/ -I%VULKAN_SDK%/Include
 SET linkerFlags=-L../bin/ -lengine.lib 
 SET defines=-D_DEBUG -DFIMPORT -D_ITERATOR_DEBUG_LEVEL=0
 

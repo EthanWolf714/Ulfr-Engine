@@ -50,6 +50,11 @@ b8 application::application_create(game* game_inst){
         return FALSE;
     }
 
+    if(!renderer.initialize(game_inst->app_config.name, &app_state.platform)){
+        FFATAL("Failed to initialize renderer. Aborting application.");
+        return FALSE;
+    }
+
     //initialize
     if(!app_state.game_inst->initialize(app_state.game_inst)){
         FFATAL("Game failed to initialized.");
@@ -99,6 +104,12 @@ b8 application::application_run(){
                 break;
             }
 
+            render_packet packet;
+            packet.delta_time = delta;
+            renderer.draw_frame(&packet);
+
+            
+
             //how long each frame took
             f64 frame_end_time = platform_get_absolute_time();
             f64 frame_elapsed_time = frame_end_time - frame_start_time;
@@ -142,6 +153,8 @@ b8 application::application_run(){
     event_syst.unregister_event(EVENT_CODE_KEY_RELEASED, 0);
     event_syst.shutdown();
     input_shutdown();
+
+    renderer.shutdown();
     platform_shutdown(&app_state.platform);
 
     return TRUE;
