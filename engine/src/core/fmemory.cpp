@@ -4,6 +4,7 @@ fmemory memory;
 
 void fmemory::initialize_memory(){
 
+    FDEBUG("Memory subsystem initialized.");
 }
 
 void fmemory::shutdown_memeory(){
