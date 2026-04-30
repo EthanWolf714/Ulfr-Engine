@@ -95,7 +95,7 @@ b8 application::application_run(){
     }
 
     app_state.is_running = FALSE;
-     event_syst.unregister_event(EVENT_CODE_APPLICATION_QUIT, 0);
+    event_syst.unregister_event(EVENT_CODE_APPLICATION_QUIT, 0);
     event_syst.unregister_event(EVENT_CODE_KEY_PRESSED,0);
     event_syst.unregister_event(EVENT_CODE_KEY_RELEASED, 0);
     event_syst.shutdown();

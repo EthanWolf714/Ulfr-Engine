@@ -13,6 +13,7 @@
 
 b8 initialize_logging(){
     //TODO: creat log file
+    FINFO("Logger initialized!");
     return 1;
 }
 
